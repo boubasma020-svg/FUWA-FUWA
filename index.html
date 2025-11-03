@@ -393,6 +393,13 @@
             border-radius: 10px;
             min-width: 100%;
             box-sizing: border-box;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
         .blog-controls {
@@ -572,6 +579,33 @@
             color: #f8eab1;
             font-size: 50px;
             z-index: 1001;
+        }
+
+        /* Blog Modal */
+        .blog-modal-content {
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .blog-modal-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .blog-modal-content h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .blog-modal-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #1a1a1a;
+            margin-bottom: 15px;
         }
 
         @media (max-width: 768px) {
@@ -984,6 +1018,16 @@
         <img class="modal-image" id="modalImage">
     </div>
 
+    <!-- Blog Modal -->
+    <div id="blogModal" class="modal">
+        <div class="modal-content blog-modal-content">
+            <span class="close" onclick="closeBlogModal()">&times;</span>
+            <div id="blogModalContent">
+                <!-- Content will be dynamically inserted -->
+            </div>
+        </div>
+    </div>
+
     <!-- Blog Section -->
     <section class="blog-section" id="blog">
         <div class="blog-content">
@@ -998,12 +1042,12 @@
             <button class="carousel-btn" onclick="scrollBlogCarousel('left')">←</button>
             <div class="blog-carousel-wrapper" id="blogCarouselWrapper">
                 <div class="blog-carousel-track" id="blogCarouselTrack">
-                    <div class="blog-card">
+                    <div class="blog-card" onclick="openBlogModal(0)">
                         <img src="img1.png" alt="Blog 1" class="blog-image">
                         <h3>FUWA FUWA x PERFECT Ted</h3>
                         <p>Qui est derrière cette Collaboration ?</p>
                     </div>
-                    <div class="blog-card">
+                    <div class="blog-card" onclick="openBlogModal(1)">
                         <img src="img2.png" alt="Blog 2" class="blog-image">
                         <h3>FUWA FUWA x PERFECT Ted</h3>
                         <p>Qui est derrière cette Collaboration ?</p>
@@ -1122,6 +1166,51 @@
                 }
             });
         });
+
+        // Blog data
+        const blogPosts = [
+            {
+                image: 'img1.png',
+                title: 'FUWA FUWA x PERFECT Ted',
+                excerpt: 'Qui est derrière cette Collaboration ?',
+                content: `
+                    <p>Découvrez notre collaboration exclusive avec PERFECT Ted, une rencontre unique entre la tradition japonaise des pancakes soufflés et l'innovation culinaire marocaine.</p>
+                    <p>Cette collaboration a vu le jour grâce à une vision partagée : créer des expériences gustatives inoubliables qui célèbrent l'art de la pâtisserie.</p>
+                    <p>Les pancakes FUWA FUWA sont reconnus pour leur texture légère et aérienne, tandis que PERFECT Ted apporte son expertise en matière de saveurs innovantes. Ensemble, nous avons créé une collection limitée qui marie parfaitement ces deux mondes.</p>
+                    <p>Ne manquez pas cette occasion unique de goûter à cette collaboration exceptionnelle, disponible pour une durée limitée dans notre établissement de Casablanca.</p>
+                `
+            },
+            {
+                image: 'img2.png',
+                title: 'FUWA FUWA x PERFECT Ted',
+                excerpt: 'Qui est derrière cette Collaboration ?',
+                content: `
+                    <p>Suite de notre collaboration FUWA FUWA x PERFECT Ted - découvrez les coulisses de cette création unique.</p>
+                    <p>Notre équipe a travaillé pendant des mois pour perfectionner chaque détail de cette collection, des ingrédients sélectionnés avec soin à la présentation finale.</p>
+                    <p>Chaque pancake est préparé avec amour et attention, en respectant les techniques traditionnelles japonaises tout en y ajoutant notre touche marocaine distinctive.</p>
+                    <p>Visitez-nous pour découvrir cette expérience culinaire exceptionnelle et partagez vos moments FUWA FUWA sur Instagram avec #FuwaFuwaMorocco.</p>
+                `
+            }
+        ];
+
+        // Blog modal functions
+        function openBlogModal(index) {
+            const modal = document.getElementById('blogModal');
+            const content = document.getElementById('blogModalContent');
+            const post = blogPosts[index];
+
+            content.innerHTML = `
+                <img src="${post.image}" alt="${post.title}">
+                <h2>${post.title}</h2>
+                ${post.content}
+            `;
+
+            modal.style.display = 'block';
+        }
+
+        function closeBlogModal() {
+            document.getElementById('blogModal').style.display = 'none';
+        }
 
         // Blog carousel functions
         let currentBlogSlide = 0;
