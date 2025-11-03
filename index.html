@@ -548,19 +548,88 @@
         }
 
         @media (max-width: 768px) {
+            /* Navigation */
+            nav {
+                padding: 15px 20px;
+                margin: 10px;
+                flex-wrap: wrap;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+
+            .logo::before {
+                width: 80px;
+                height: 80px;
+            }
+
+            .logo-subtitle {
+                font-size: 10px;
+            }
+
+            .nav-links {
+                gap: 20px;
+                font-size: 14px;
+            }
+
+            .nav-links a {
+                font-size: 14px;
+            }
+
+            .search-icon {
+                width: 24px;
+                height: 24px;
+            }
+
+            /* Hero Section */
             .hero {
                 flex-direction: column;
-                padding: 40px 20px;
+                padding: 30px 20px;
+            }
+
+            .hero-content {
+                max-width: 100%;
+                text-align: center;
             }
 
             .hero h1 {
-                font-size: 40px;
+                font-size: 32px;
+                line-height: 1.2;
             }
 
             .cta-button {
                 padding: 10px 20px;
                 font-size: 14px;
                 margin-left: 0;
+            }
+
+            .hero-image {
+                margin-top: 30px;
+                justify-content: center;
+            }
+
+            .pancake-image {
+                max-width: 100%;
+                width: 90%;
+            }
+
+            .chocolate-splash {
+                width: 200px;
+                top: -30px;
+            }
+
+            /* Menu Section */
+            .menu-section {
+                padding: 40px 20px;
+            }
+
+            .menu-header {
+                font-size: 36px;
+            }
+
+            .section-title {
+                font-size: 36px;
             }
 
             .bestsellers-layout {
@@ -571,8 +640,29 @@
             .bestsellers-layout .menu-header {
                 min-width: auto;
                 text-align: center;
+                font-size: 36px;
             }
 
+            .carousel-section {
+                margin-bottom: 40px;
+            }
+
+            .carousel-item {
+                min-width: 80%;
+            }
+
+            .carousel-item img {
+                width: 100%;
+                height: auto;
+            }
+
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+
+            /* Menu Cards */
             .menu-carousel-section {
                 flex-direction: column;
             }
@@ -582,13 +672,90 @@
                 align-items: center;
             }
 
-            .blog-section {
-                flex-direction: column;
+            .menu-card {
+                width: 90%;
+                max-width: 300px;
             }
 
+            .menu-card h3 {
+                font-size: 20px;
+            }
+
+            .menu-card p {
+                font-size: 14px;
+            }
+
+            /* Modal */
+            .modal-content {
+                width: 90%;
+                padding: 30px 20px;
+            }
+
+            .modal-content h3 {
+                font-size: 20px;
+            }
+
+            .menu-items {
+                font-size: 14px;
+            }
+
+            /* Blog Section */
+            .blog-section {
+                flex-direction: column;
+                padding: 40px 20px;
+            }
+
+            .blog-title {
+                font-size: 48px;
+            }
+
+            .blog-description {
+                font-size: 16px;
+            }
+
+            .blog-card {
+                padding: 20px;
+            }
+
+            .blog-card h3 {
+                font-size: 20px;
+            }
+
+            .blog-card p {
+                font-size: 14px;
+            }
+
+            /* Footer */
             .footer-content {
                 flex-direction: column;
-                gap: 40px;
+                gap: 30px;
+                padding: 40px 20px;
+            }
+
+            .footer-section h4 {
+                font-size: 16px;
+            }
+
+            .footer-section {
+                font-size: 14px;
+            }
+
+            .footer-logo-text {
+                font-size: 28px;
+            }
+
+            .footer-logo img {
+                max-width: 150px !important;
+            }
+
+            .newsletter-input {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            .footer-bottom {
+                font-size: 12px;
+                padding: 15px;
             }
         }
     </style>
