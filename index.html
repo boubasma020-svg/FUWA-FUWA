@@ -109,16 +109,16 @@
         .cta-button {
             background-color: #F5C842;
             border: 2px solid #1a1a1a;
-            padding: 15px 40px;
-            font-size: 20px;
+            padding: 12px 30px;
+            font-size: 16px;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             transition: background-color 0.3s;
             text-decoration: none;
             color: #1a1a1a;
-            margin-left: 100px;
+            margin-left: 0;
         }
 
         .cta-button:hover {
@@ -550,10 +550,17 @@
         @media (max-width: 768px) {
             .hero {
                 flex-direction: column;
+                padding: 40px 20px;
             }
 
             .hero h1 {
-                font-size: 50px;
+                font-size: 40px;
+            }
+
+            .cta-button {
+                padding: 10px 20px;
+                font-size: 14px;
+                margin-left: 0;
             }
 
             .bestsellers-layout {
