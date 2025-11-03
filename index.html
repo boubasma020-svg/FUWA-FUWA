@@ -84,6 +84,33 @@
             cursor: pointer;
         }
 
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #1a1a1a;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
         /* Hero Section */
         .hero {
             display: flex;
@@ -553,6 +580,7 @@
                 padding: 15px 20px;
                 margin: 10px;
                 flex-wrap: wrap;
+                position: relative;
             }
 
             .logo {
@@ -568,13 +596,38 @@
                 font-size: 10px;
             }
 
+            .hamburger {
+                display: flex;
+            }
+
             .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #f8eab1;
+                width: 100%;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
                 gap: 20px;
-                font-size: 14px;
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
             }
 
             .nav-links a {
-                font-size: 14px;
+                font-size: 16px;
+                display: block;
+                padding: 10px;
             }
 
             .search-icon {
@@ -767,10 +820,15 @@
             FUWA FUWA
             <div class="logo-subtitle ,center">MOROCCO</div>
         </div>
-        <ul class="nav-links">
-            <li><a href="#bestsellers">BEST SELLERS</a></li>
-            <li><a href="#menu">MENU</a></li>
-            <li><a href="#blog">BLOG</a></li>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#bestsellers" onclick="closeMenu()">BEST SELLERS</a></li>
+            <li><a href="#menu" onclick="closeMenu()">MENU</a></li>
+            <li><a href="#blog" onclick="closeMenu()">BLOG</a></li>
             <li>
                 <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
@@ -1000,6 +1058,21 @@
     </footer>
 
     <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const hamburger = document.querySelector('.hamburger');
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const hamburger = document.querySelector('.hamburger');
+            navLinks.classList.remove('active');
+            hamburger.classList.remove('active');
+        }
+
         function scrollCarousel(carouselId, direction) {
             const carousel = document.getElementById(carouselId);
             const scrollAmount = carousel.offsetWidth / 2 + 15;
